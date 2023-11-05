@@ -18,7 +18,7 @@ class PizzaController extends Controller
 
     /**
      * Store a newly created pizza in storage.
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StorePizzaRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(StorePizzaRequest $request)

@@ -9,6 +9,8 @@ class Ingredient extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'cost_price'];
+
     protected $hidden = ['created_at', 'updated_at'];
 
     public function pizzas()

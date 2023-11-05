@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class StorePizzaRequest extends FormRequest
+class StorePizzaRequest extends PizzaRequest
 {
     /**
      * Validation rules for store pizza.
@@ -13,7 +11,7 @@ class StorePizzaRequest extends FormRequest
      */
     public function rules(): array
     {
-        return array_merge(parent::commonRules(), [
+        return array_merge(parent::generalRules(), [
             'name' => 'required|string',
         ]);
     }

@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class PizzaTest extends TestCase
 {
+
     use RefreshDatabase;
 
     /** @test create a pizza*/

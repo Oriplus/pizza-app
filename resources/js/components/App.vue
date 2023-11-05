@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-container">
+  <div class="container bg-body-secondary py-3 vh-100">
     <header class="bg-light mb-3 px-2 rounded">
       <h1 id="title" class="text-center">Pizza Factory<i class="bi bi-list-check"></i></h1>
       <div class="d-flex justify-content-end ">

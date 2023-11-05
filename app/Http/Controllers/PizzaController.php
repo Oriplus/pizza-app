@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePizzaRequest;
+use App\Http\Requests\UpdatePizzaRequest;
 use App\Models\Pizza;
 use Illuminate\Http\Request;
 
@@ -37,19 +38,24 @@ class PizzaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Update a pizza.
+     * @param  App\Http\Requests\UpdatePizzaRequest $request
+     * @param string $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show(string $id)
+    public function update(UpdatePizzaRequest $request, string $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        $pizza = Pizza::findOrFail($id);
+        try {
+            $pizza->update([
+                'selling_price' => $request->selling_price,
+            ]);
+            $pizza->ingredients()->sync($request->ingredients);
+            $pizzas = Pizza::with('ingredients')->get();
+            return response()->json(['message' => 'Pizza updated successfully!', 'pizzas' => $pizzas], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed updating pizza', 'error' => $e->getMessage()], 500);
+        }
     }
 
     /**

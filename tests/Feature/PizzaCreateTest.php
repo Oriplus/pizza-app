@@ -4,10 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\Ingredient;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class PizzaTest extends TestCase
+class PizzaCreateTest extends TestCase
 {
 
     use RefreshDatabase;

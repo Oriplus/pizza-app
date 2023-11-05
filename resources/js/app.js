@@ -1,11 +1,13 @@
 import "./bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { createApp } from "vue";
-import Example from "./components/Example.vue";
+import App from "./components/App.vue";
 
 const app = createApp({
     components: {
-        Example,
+        App,
     },
 });
 

@@ -12,7 +12,7 @@ class PizzaCreateTest extends TestCase
     use RefreshDatabase;
 
     /** @test create a pizza*/
-    public function shouldCreateAPizza(): void
+    public function test_create_pizza(): void
     {
         $ingredient1 = Ingredient::create(['name' => 'Cheese', 'cost_price' => 1.00]);
         $ingredient2 = Ingredient::create(['name' => 'Tomato', 'cost_price' => 0.50]);
@@ -35,7 +35,7 @@ class PizzaCreateTest extends TestCase
     }
 
     /** @test create pizza validations */
-    public function shouldFailCreatingAPizza(): void
+    public function test_fail_pizza_create(): void
     {
         $response = $this->postJson('/api/pizzas', [
             'name' => '',

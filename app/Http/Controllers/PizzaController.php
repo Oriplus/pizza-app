@@ -59,10 +59,19 @@ class PizzaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * delete a pizza.
+     * @param string $id
+     * @return void
      */
     public function destroy(string $id)
     {
-        //
+        $pizza = Pizza::findOrFail($id);
+        try {
+            $pizza->delete();
+            $pizzas = Pizza::with('ingredients')->get();
+            return response()->json(['message' => 'Pizza deleted successfully!', 'pizzas' => $pizzas], 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed deleting pizza', 'error' => $e->getMessage()], 500);
+        }
     }
 }

@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class PizzaDeleteTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** Test delete a pizza */
     public function test_a_pizza_can_be_deleted()
     {

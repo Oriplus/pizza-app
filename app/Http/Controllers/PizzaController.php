@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePizzaRequest;
 use App\Http\Requests\UpdatePizzaRequest;
+use App\Models\Ingredient;
 use App\Models\Pizza;
-use Illuminate\Http\Request;
 
 class PizzaController extends Controller
 {
@@ -14,7 +14,9 @@ class PizzaController extends Controller
      */
     public function index()
     {
-        //
+        $ingredients = Ingredient::all();
+        $pizzas = Pizza::with('ingredients')->get();
+        return response()->json(['ingredients' => $ingredients, 'pizzas' => $pizzas], 200);
     }
 
     /**

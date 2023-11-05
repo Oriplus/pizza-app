@@ -23,10 +23,11 @@ class PizzaUpdateTest extends TestCase
     }
 
     /** test pizza update*/
-    public function shouldSuccessfulUpdatePizza()
+    public function test_successful_pizza_update()
     {
 
         $pizza = new Pizza();
+        $pizza->name = "New Pizza";
         $pizza->selling_price = 5.99;
         $pizza->save();
         $pizza->ingredients()->sync([$this->ingredient1->id]);
@@ -50,7 +51,7 @@ class PizzaUpdateTest extends TestCase
     }
 
     /** test fail non existin pizza update*/
-    public function testUpdateNonExistentPizza()
+    public function test_fail_update_non_existent_pizza()
     {
         $response = $this->putJson('/api/pizzas/99999', [
             'selling_price' => '4.99',
